@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrum Master Academy</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --dark-bg: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-bg);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn-large {
+            padding: 12px 24px;
+            font-size: 1.1rem;
+        }
+        
+        .features {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--dark-bg);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .learning-paths {
+            margin-bottom: 4rem;
+        }
+        
+        .path-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .path-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .path-image {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 1.2rem;
+        }
+        
+        .path-content {
+            padding: 1.5rem;
+        }
+        
+        .path-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .path-content p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .path-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        .testimonials {
+            margin-bottom: 4rem;
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 3rem 0;
+            margin-left: -1rem;
+            margin-right: -1rem;
+        }
+        
+        .testimonials .section-title {
+            color: white;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .testimonial-content {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .cta-section {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 4rem;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        footer {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 3rem 1rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* Learning module styles */
+        .module-container {
+            display: none;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .module-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .progress-bar {
+            width: 200px;
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--secondary-color);
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        .module-content {
+            margin-bottom: 2rem;
+        }
+        
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .tab-container {
+            margin-bottom: 2rem;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1rem;
+        }
+        
+        .tab {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .tab.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .quiz-container {
+            background-color: #f7f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-question {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-option {
+            padding: 0.75rem;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .quiz-option:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .quiz-option.selected {
+            background-color: #e3f2fd;
+            border-color: var(--primary-color);
+        }
+        
+        .quiz-feedback {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .quiz-feedback.correct {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .quiz-feedback.incorrect {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        
+        .module-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                flex-direction: column;
+            }
+            
+            .hero-content, .hero-image {
+                flex: none;
+                width: 100%;
+            }
+            
+            .features-grid, .path-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/api/placeholder/40/40" alt="Logo">
+                <span>Scrum Master Academy</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Recursos</a>
+                <a href="#learning-paths">Trilhas</a>
+                <a href="#testimonials">Depoimentos</a>
+                <a href="#about">Sobre</a>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-secondary" id="login-btn">Entrar</button>
+                <button class="btn btn-primary" id="signup-btn">Cadastrar</button>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Torne-se um Scrum Master Profissional</h1>
+                <p>Aprenda com especialistas, pratique com simulações e obtenha certificações reconhecidas pelo mercado.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large" id="start-learning">Começar Agora</button>
+                    <button class="btn btn-secondary btn-large" id="explore-btn">Explorar Trilhas</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="/api/placeholder/500/300" alt="Scrum Master em ação">
+            </div>
+        </section>
+        
+        <section class="features" id="features">
+            <h2 class="section-title">Recursos do Aplicativo</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Conteúdo Especializado</h3>
+                    <p>Material desenvolvido por Scrum Masters certificados com anos de experiência em empresas de tecnologia.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Simulações Interativas</h3>
+                    <p>Pratique facilitando reuniões diárias, retrospectivas e outras cerimônias Scrum em ambientes simulados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Preparação para Certificações</h3>
+                    <p>Materiais e simulados alinhados com as principais certificações do mercado (PSM, CSM, etc).</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Métricas de Progresso</h3>
+                    <p>Acompanhe sua evolução e identifique áreas de melhoria com dashboards personalizados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Comunidade de Praticantes</h3>
+                    <p>Conecte-se com outros Scrum Masters para compartilhar experiências, desafios e soluções.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Estudos de Caso Reais</h3>
+                    <p>Aprenda com exemplos práticos de como equipes reais superaram desafios com a ajuda do Scrum Master.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="learning-paths" id="learning-paths">
+            <h2 class="section-title">Trilhas de Aprendizado</h2>
+            <div class="path-cards">
+                <div class="path-card" id="path-fundamentals">
+                    <div class="path-image">
+                        <img src="/api/placeholder/300/200" alt="Fundamentos do Scrum">
+                    </div>
+                    <div class="path-content">
+                        <h3>Fundamentos do Scrum</h3>
+                        <p>Aprenda os conceitos básicos do framework Scrum, suas cerimônias e artefatos.</p>
+                        <div class="path-meta">
+                            <span>8 módulos</span>
+                            <span>Iniciante</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="path-card" id="path-master">
+                    <div class="path-image">
+                        <img src="/api/placeholder/300/200" alt="Scrum Master Profissional">
+                    </div>
+                    <div class="path-content">
+                        <h3>Scrum Master Profissional</h3>
+                        <p>Desenvolva as habilidades essenciais para atuar como um Scrum Master eficaz.</p>
+                        <div class="path-meta">
+                            <span>12 módulos</span>
+                            <span>Intermediário</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="path-card" id="path-advanced">
+                    <div class="path-image">
+                        <img src="/api/placeholder/300/200" alt="Scrum Master Avançado">
+                    </div>
+                    <div class="path-content">
+                        <h3>Scrum Master Avançado</h3>
+                        <p>Técnicas avançadas para lidar com times complexos e grandes organizações.</p>
+                        <div class="path-meta">
+                            <span>10 módulos</span>
+                            <span>Avançado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="testimonials" id="testimonials">
+            <h2 class="section-title">O Que Dizem Nossos Alunos</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p class="testimonial-content">"Após três meses estudando na Scrum Master Academy, consegui minha certificação PSM I e fui promovido a Scrum Master na minha empresa. O conteúdo prático fez toda a diferença!"</p>
+                    <div class="testimonial-author">Pedro Almeida</div>
+                    <div class="testimonial-role">Scrum Master na TechCorp</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <h2>Comece Sua Jornada Hoje</h2>
+            <p>Esteja você começando agora ou buscando aprimorar suas habilidades como Scrum Master, nós temos a trilha certa para você.</p>
+            <button class="btn btn-primary btn-large">Cadastre-se Gratuitamente</button>
+        </section>
+        
+        <section class="module-container" id="module-view">
+            <div class="module-header">
+                <h2>Módulo 1: Introdução ao Scrum</h2>
+                <div class="module-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 25%"></div>
+                    </div>
+                    <span>25% Completo</span>
+                </div>
+            </div>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" data-tab="content">Conteúdo</div>
+                    <div class="tab" data-tab="practice">Prática</div>
+                    <div class="tab" data-tab="quiz">Quiz</div>
+                    <div class="tab" data-tab="resources">Recursos</div>
+                </div>
+                
+                <div class="tab-content active" id="content-tab">
+                    <h3>O que é Scrum?</h3>
+                    <p>Scrum é um framework leve que ajuda pessoas, times e organizações a gerar valor através de soluções adaptativas para problemas complexos.</p>
+                    
+                    <p>Em essência, Scrum requer um Scrum Master para promover um ambiente onde:</p>
+                    <ul>
+                        <li>Um Product Owner ordena o trabalho para um problema complexo em um Product Backlog.</li>
+                        <li>O Scrum Team transforma uma seleção do trabalho em um incremento de valor durante uma Sprint.</li>
+                        <li>O Scrum Team e seus stakeholders inspecionam os resultados e se adaptam para a próxima Sprint.</li>
+                        <li>Repeat</li>
+                    </ul>
+                    
+                    <h3>O Scrum Master</h3>
+                    <p>O Scrum Master é responsável por estabelecer o Scrum conforme definido no Guia do Scrum. Eles fazem isso ajudando todos a entender a teoria e a prática do Scrum, tanto dentro do Scrum Team quanto na organização.</p>
+                    
+                    <h3>Vídeo: Introdução ao Scrum</h3>
+                    <div style="background-color: #eee; height: 300px; display: flex; align-items: center; justify-content: center; margin: 1rem 0;">
+                        [Vídeo Introdutório Aqui]
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="practice-tab">
+                    <h3>Simulação: Facilitando uma Daily Scrum</h3>
+                    <p>Nesta simulação, você praticará a facilitação de uma reunião diária com um time virtual.</p>
+                    
+                    <div style="background-color: #eee; height: 400px; display: flex; align-items: center; justify-content: center; margin: 1rem 0;">
+                        [Simulação Interativa Aqui]
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="quiz-tab">
+                    <h3>Quiz: Conceitos Básicos do Scrum</h3>
+                    <div class="quiz-container">
+                        <div class="quiz-question">1. Qual das seguintes opções NÃO é uma responsabilidade do Scrum Master?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option">a) Facilitar eventos Scrum quando solicitado ou necessário</div>
+                            <div class="quiz-option">b) Priorizar o Product Backlog para maximizar valor</div>
+                            <div class="quiz-option">c) Remover impedimentos ao progresso do Scrum Team</div>
+                            <div class="quiz-option">d) Ajudar a organização a adotar Scrum</div>
+                        </div>
+                        <div class="quiz-feedback">
+                            Resposta correta: b) Priorizar o Product Backlog para maximizar valor. Esta é uma responsabilidade do Product Owner, não do Scrum Master.
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-container">
+                        <div class="quiz-question">2. Qual é a duração recomendada para uma Sprint?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option">a) 1 semana</div>
+                            <div class="quiz-option">b) 2 semanas</div>
+                            <div class="quiz-option">c) 1 mês ou menos</div>
+                            <div class="quiz-option">d) 3 meses</div>
+                        </div>
+                        <div class="quiz-feedback">
+                            Resposta correta: c) 1 mês ou menos. O Scrum Guide recomenda que uma Sprint tenha uma duração consistente de um mês ou menos.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="resources-tab">
+                    <h3>Recursos Adicionais</h3>
+                    <ul>
+                        <li><a href="#">Guia Scrum 2020 (PDF)</a></li>
+                        <li><a href="#">Artigo: "O Papel do Scrum Master na Transformação Ágil"</a></li
+                            <li><a href="#">Artigo: "O Papel do Scrum Master na Transformação Ágil"</a></li>
+                        <li><a href="#">E-book: Guia Prático para Scrum Masters Iniciantes</a></li>
+                        <li><a href="#">Podcast: Conversas com Scrum Masters Experientes</a></li>
+                        <li><a href="#">Template: Facilitação de Retrospectivas Eficazes</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="module-nav">
+                <button class="btn btn-secondary" id="back-btn">Voltar para a Trilha</button>
+                <button class="btn btn-primary" id="next-module">Próximo Módulo</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre Nós</h3>
+                <p>A Scrum Master Academy é dedicada a formar profissionais ágeis completos, com conhecimento teórico e prático sobre o framework Scrum.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">FB</a>
+                    <a href="#" class="social-icon">TW</a>
+                    <a href="#" class="social-icon">IN</a>
+                    <a href="#" class="social-icon">YT</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Trilhas</h3>
+                <ul>
+                    <li><a href="#">Fundamentos do Scrum</a></li>
+                    <li><a href="#">Scrum Master Profissional</a></li>
+                    <li><a href="#">Scrum Master Avançado</a></li>
+                    <li><a href="#">Preparatório para Certificações</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Recursos</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">E-books Gratuitos</a></li>
+                    <li><a href="#">Webinars</a></li>
+                    <li><a href="#">Comunidade</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Suporte</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2025 Scrum Master Academy. Todos os direitos reservados.
+        </div>
+    </footer>
+    
+    <script>
+        // DOM Elements
+        const startLearningBtn = document.getElementById('start-learning');
+        const exploreBtn = document.getElementById('explore-btn');
+        const moduleView = document.getElementById('module-view');
+        const backBtn = document.getElementById('back-btn');
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const quizOptions = document.querySelectorAll('.quiz-option');
+        const pathCards = document.querySelectorAll('.path-card');
+        
+        // Show Module View
+        function showModuleView() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+            });
+            moduleView.style.display = 'block';
+        }
+        
+        // Return to Main View
+        function showMainView() {
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = '';
+            });
+            moduleView.style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Tab Navigation
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Show corresponding tab content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+        
+        // Quiz Option Selection
+        quizOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Reset all options in the same quiz
+                const parent = option.parentElement;
+                parent.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Select clicked option
+                option.classList.add('selected');
+                
+                // Show feedback
+                const feedback = parent.nextElementSibling;
+                feedback.style.display = 'block';
+                
+                // If correct answer (b for first question, c for second)
+                if ((parent.querySelector('.quiz-question').textContent.includes('1.') && option.textContent.includes('b)')) ||
+                    (parent.querySelector('.quiz-question').textContent.includes('2.') && option.textContent.includes('c)'))) {
+                    feedback.classList.add('correct');
+                    feedback.classList.remove('incorrect');
+                } else {
+                    feedback.classList.add('incorrect');
+                    feedback.classList.remove('correct');
+                }
+            });
+        });
+        
+        // Event Listeners
+        startLearningBtn.addEventListener('click', showModuleView);
+        
+        exploreBtn.addEventListener('click', () => {
+            document.getElementById('learning-paths').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        backBtn.addEventListener('click', showMainView);
+        
+        pathCards.forEach(card => {
+            card.addEventListener('click', showModuleView);
+        });
+        
+        // User Data Model
+        class UserProgress {
+            constructor() {
+                this.completedModules = [];
+                this.quizScores = {};
+                this.currentModule = 1;
+                this.badges = [];
+            }
+            
+            completeModule(moduleId) {
+                if (!this.completedModules.includes(moduleId)) {
+                    this.completedModules.push(moduleId);
+                }
+                this.currentModule = moduleId + 1;
+                this.updateProgress();
+            }
+            
+            submitQuizScore(moduleId, score) {
+                this.quizScores[moduleId] = score;
+                if (score > 80) {
+                    this.checkForBadges();
+                }
+            }
+            
+            checkForBadges() {
+                // Logic for awarding badges based on progress
+                if (this.completedModules.length >= 5 && !this.badges.includes('beginner')) {
+                    this.badges.push('beginner');
+                    this.showBadgeNotification('Iniciante em Scrum');
+                }
+            }
+            
+            showBadgeNotification(badgeName) {
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.style.position = 'fixed';
+                notification.style.bottom = '20px';
+                notification.style.right = '20px';
+                notification.style.backgroundColor = '#4CAF50';
+                notification.style.color = 'white';
+                notification.style.padding = '15px';
+                notification.style.borderRadius = '5px';
+                notification.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
+                notification.innerHTML = `<strong>Parabéns!</strong> Você ganhou a medalha: ${badgeName}`;
+                
+                document.body.appendChild(notification);
+                
+                // Remove after 5 seconds
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'opacity 0.5s';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 500);
+                }, 5000);
+            }
+            
+            updateProgress() {
+                // Update UI based on user progress
+                const progressFill = document.querySelector('.progress-fill');
+                const progressText = document.querySelector('.module-progress span');
+                
+                const totalModules = 8; // Total modules in Fundamentals track
+                const progressPercentage = (this.completedModules.length / totalModules) * 100;
+                
+                progressFill.style.width = `${progressPercentage}%`;
+                progressText.textContent = `${Math.round(progressPercentage)}% Completo`;
+            }
+        }
+        
+        // Initialize user progress
+        const userProgress = new UserProgress();
+        
+        // Simulate module completion
+        document.getElementById('next-module').addEventListener('click', () => {
+            userProgress.completeModule(1);
+            alert('Módulo concluído! Avançando para o próximo módulo...');
+        });
+        
+        // Learning Content Class
+        class LearningContent {
+            constructor() {
+                this.modules = {
+                    1: {
+                        title: "Introdução ao Scrum",
+                        sections: [
+                            { type: "text", content: "O que é Scrum?" },
+                            { type: "video", content: "introducao-scrum.mp4" },
+                            { type: "quiz", content: "quiz-fundamentos" }
+                        ]
+                    },
+                    2: {
+                        title: "O Papel do Scrum Master",
+                        sections: [
+                            { type: "text", content: "Responsabilidades do Scrum Master" },
+                            { type: "simulation", content: "facilitacao-daily" },
+                            { type: "quiz", content: "quiz-scrum-master" }
+                        ]
+                    },
+                    3: {
+                        title: "Cerimônias do Scrum",
+                        sections: [
+                            { type: "text", content: "Sprint Planning, Daily Scrum, Sprint Review e Retrospective" },
+                            { type: "simulation", content: "facilitacao-retrospectiva" },
+                            { type: "quiz", content: "quiz-cerimonias" }
+                        ]
+                    }
+                };
+            }
+            
+            loadModule(moduleId) {
+                const module = this.modules[moduleId];
+                if (!module) return;
+                
+                document.querySelector('.module-header h2').textContent = `Módulo ${moduleId}: ${module.title}`;
+                
+                // Here we would load the actual content based on module structure
+                console.log(`Carregando módulo: ${module.title}`);
+            }
+        }
+        
+        // Initialize learning content
+        const learningContent = new LearningContent();
+        
+        // Notification System
+        class NotificationSystem {
+            constructor() {
+                this.notifications = [];
+            }
+            
+            addNotification(message, type = 'info') {
+                const notification = {
+                    id: Date.now(),
+                    message,
+                    type,
+                    read: false
+                };
+                
+                this.notifications.push(notification);
+                this.showNotification(notification);
+            }
+            
+            showNotification(notification) {
+                // Create notification element
+                const element = document.createElement('div');
+                element.style.position = 'fixed';
+                element.style.top = '20px';
+                element.style.right = '20px';
+                element.style.backgroundColor = notification.type === 'success' ? '#4CAF50' : '#2196F3';
+                element.style.color = 'white';
+                element.style.padding = '15px';
+                element.style.borderRadius = '5px';
+                element.style.zIndex = 1000;
+                element.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
+                element.innerHTML = notification.message;
+                
+                document.body.appendChild(element);
+                
+                // Remove after 5 seconds
+                setTimeout(() => {
+                    element.style.opacity = '0';
+                    element.style.transition = 'opacity 0.5s';
+                    setTimeout(() => {
+                        document.body.removeChild(element);
+                    }, 500);
+                }, 5000);
+            }
+            
+            markAsRead(notificationId) {
+                const notification = this.notifications.find(n => n.id === notificationId);
+                if (notification) {
+                    notification.read = true;
+                }
+            }
+        }
+        
+        // Initialize notification system
+        const notificationSystem = new NotificationSystem();
+        
+        // Community Feature
+        class CommunitySystem {
+            constructor() {
+                this.discussions = [
+                    {
+                        id: 1,
+                        title: "Como lidar com resistência à mudança?",
+                        author: "Carlos Silva",
+                        date: "2025-03-15",
+                        replies: 12
+                    },
+                    {
+                        id: 2,
+                        title: "Técnicas para facilitar retrospectivas remotas",
+                        author: "Ana Martins",
+                        date: "2025-03-20",
+                        replies: 8
+                    }
+                ];
+            }
+            
+            getLatestDiscussions() {
+                return this.discussions.sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+            
+            createDiscussion(title, content, authorId) {
+                const newDiscussion = {
+                    id: this.discussions.length + 1,
+                    title,
+                    content,
+                    author: "Usuário Atual", // In a real app, get from user profile
+                    date: new Date().toISOString().split('T')[0],
+                    replies: 0
+                };
+                
+                this.discussions.push(newDiscussion);
+                return newDiscussion;
+            }
+        }
+        
+        // Initialize community system
+        const communitySystem = new CommunitySystem();
+        
+        // Show a welcome notification
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                notificationSystem.addNotification('Bem-vindo à Scrum Master Academy! Comece sua jornada agora.', 'success');
+            }, 2000);
+        });
+        
+        // Authentication and User Management (simplified for demo)
+        document.getElementById('login-btn').addEventListener('click', () => {
+            alert('Funcionalidade de login será implementada na versão final.');
+        });
+        
+        document.getElementById('signup-btn').addEventListener('click', () => {
+            alert('Funcionalidade de cadastro será implementada na versão final.');
+        });
+    </script>
+</body>
+</html>
